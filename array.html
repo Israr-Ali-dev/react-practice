@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+
+<body>
+
+    <script>
+        var generalArray = [];
+        var lastRemaining = 0;
+
+        var designArray1 = ['designA', 'designA', 'designA', 'designA', 'designA', 'designA', 'designA', 'designA',
+            'designA', 'designA', 'designA', 'designA', 'designA', 'designA', 'designA', 'designA', 'designA',
+            'designA', 'designA', 'designA', 'designA', 'designA', 'designA', 'designA', 'designA', 'designA',
+            'designA', 'designA', 'designA', 'designA', 'designA', 'designA', 'designA', 'designA', 'designA',
+            'designA', 'designA', 'designA', 'designA', 'designA', 'designA', 'designA', 'designA', 'designA',
+            'designA', 'designA', 'designA', 'designA',
+            'designA', 'designA', 'designA', 'designA', 'designA', 'designA', 'designA', 'designA', 'designA',
+            'designA', 'designA'
+        ];
+
+
+        var designArray2 = ['designB', 'designB', 'designB', 'designB', 'designB', 'designB', 'designB', 'designB',
+            'designB', 'designB', 'designB', 'designB', 'designB', 'designB', 'designB', 'designB', 'designB',
+            'designB', 'designB', 'designB', 'designB', 'designB', 'designB', 'designB', 'designB', 'designB',
+            'designB', 'designB', 'designB', 'designB', 'designB', 'designB', 'designB', 'designB', 'designB',
+        ];
+
+
+        var designArray3 = ['designC', 'designC', 'designC', 'designC', 'designC', 'designC', 'designC', 'designC',
+            'designC', 'designC', 'designC', 'designC', 'designC', 'designC', 'designC', 'designC', 'designC',
+            'designC', 'designC', 'designC', 'designC', 'designC', 'designC', 'designC', 'designC', 'designC',
+            'designC', 'designC', 'designC', 'designC', 'designC', 'designC', 'designC',
+        ];
+
+
+
+
+        function batchArray(array) {
+
+            let length = array.length;
+            console.log(length)
+            let moduls = length % 24;
+            if (moduls !== 0) {
+                lastRemaining = moduls;
+            }
+            console.log('moduls ' + moduls);
+            let totalArray = (length - moduls) / 24;
+            console.log('Total Array ' + totalArray)
+            let generalLength = generalArray.length;
+            console.log("GeneralLength" + generalLength);
+            let newArray = [];
+            let modArray = [];
+
+            if (generalLength > 0) {
+                let leastArray = generalLength - 1
+
+                for (let i = leastArray; i < (totalArray + generalLength); i++) {
+                    console.log(i);
+                    if (generalArray[i] == 24) {
+
+
+
+                    } else {
+
+                        for (let k = generalArray[leastArray].length; k < 24; k++) {
+
+                            generalArray[leastArray][k] = array[k];
+
+                        }
+
+                        // generalArray.push(newArray);
+                        console.log(generalArray);
+
+                    }
+                }
+
+            } else {
+
+                for (let i = 0; i < totalArray; i++) {
+
+                    for (let k = 0; k < 24; k++) {
+
+                        newArray[k] = array[k];
+
+                    }
+
+                    generalArray.push(newArray);
+
+
+                }
+                if (generalArray.length > 0 && moduls > 0) {
+
+                    for (let k = 0; k < moduls; k++) {
+
+                        modArray[k] = array[k];
+
+                    }
+                    generalArray.push(modArray);
+                }
+
+                console.log(generalArray);
+            }
+        }
+
+        batchArray(designArray1);
+        batchArray(designArray2);
+    </script>
+</body>
+
+</html>
